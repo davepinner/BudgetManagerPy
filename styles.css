@@ -1,0 +1,72 @@
+
+body {
+  font-size: 20px;
+  color: #212529;
+  font-family: 'Lora', 'Times New Roman', serif;
+}
+
+.page-heading {
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 20px
+}
+
+.page-sub-heading {
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.page-sub-heading-left {
+    color: black;
+    font-size: 25px;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.profile {
+    margin-top: 30px;
+}
+
+.profile-heading {
+    margin-left: 200px;
+}
+
+.profile-button {
+    margin-left: 200px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.table-button {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.budget-content {
+    margin-left: 200px;
+    text-align: center;
+    border: 1px black solid;
+    width: 500px;
+    height: 500px;
+}
+
+.navbar-brand{
+    font-size: 25px;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.navbar-custom {
+    background-color: #F1B24A;
+}
+
+.dropdown-item{
+    font-size: 16px;
+}

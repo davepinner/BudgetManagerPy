@@ -1,0 +1,56 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+<h1 class="page-heading" style="padding-bottom: 30px; padding-top: 30px;">Budget Manager - the realistic solution to managing your household budget</h1>
+
+<div class="profile">
+    <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Budget Area</th>
+                <th scope="col">Entries created</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+          <tbody>
+                <tr>
+                    <td>Household Members</td>
+                    <td> {{user_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_members') }}">View</a></td>
+                </tr>
+                <tr>
+                    <td>Bank Accounts</td>
+                    <td> {{bank_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_banks') }}">View</a></td>
+                </tr>
+                <tr>
+                    <td>Incomes</td>
+                    <td> {{income_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_incomes') }}">View</a></td>
+                </tr>
+                <tr>
+                    <td>Fixed Outgoings</td>
+                    <td> {{outgoing_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_outgoings') }}">View</a></td>
+                </tr>
+                <tr>
+                    <td>Variable Outgoings</td>
+                    <td> {{variable_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_outgoings') }}">View</a></td>
+                </tr>
+                <tr>
+                    <td>Transfers</td>
+                    <td> {{transfer_count}}  </td>
+                    <td><a class="btn btn-primary" href="{{ url_for('view_transfers') }}">View</a></td>
+                </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

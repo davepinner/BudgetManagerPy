@@ -1,0 +1,69 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Budget Manager Profile
+          </div>
+            <div class="page-sub-heading">
+                Manage your budget settings on this page
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container page-sub-heading-left">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              Budget Style
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+             <div class="clearfix profile-button">
+                <a class="btn btn-primary" href="{{ url_for('budget_style') }}">Create Budget style</a>
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="container page-sub-heading-left">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              Household Budget Members
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+             <div class="clearfix profile-button">
+                <a class="btn btn-primary" href="{{ url_for('view_members') }}">View</a>
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="container page-sub-heading-left">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              Household Bank Accounts
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+             <div class="clearfix profile-button">
+                <a class="btn btn-primary" href="{{ url_for('view_banks') }}">View</a>
+            </div>
+          </div>
+      </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

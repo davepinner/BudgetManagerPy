@@ -1,0 +1,52 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Outgoing Categories
+          </div>
+            <div class="page-sub-heading">
+                Manage categories for outgoings on this page, you can add new sub categories to the main categories and then apply them in your budget.
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Sub category</th>
+            </tr>
+        </thead>
+          <tbody>
+            {% for category in categories: %}
+                {% for subcategory in subcategories: %}
+                    {% if subcategory.parentcategory == category.catID %}
+                        <tr>
+                            <td> {{category.categoryname}} </td>
+                            <td> {{subcategory.subcategoryname}} </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+  <div>
+    <a class="btn btn-primary profile-button " href="{{ url_for('add_sub_category') }}">Add Sub Category</a>
+  </div>
+
+
+{% include "footer.html" %}
+{% endblock %}

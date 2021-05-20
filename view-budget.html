@@ -1,0 +1,70 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+
+<h1 align="center"><strong>Budget for current month</strong></h1>
+<div class="profile">
+    <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Account</th>
+                <th scope="col">Opening Balance</th>
+                <th scope="col">Forecast Closing Balance</th>
+                <th scope="col">Projected Closing Balance</th>
+            </tr>
+        </thead>
+          <tbody>
+            {% for account in accounts: %}
+                <tr>
+                    <td> {{ account.bankname }} - {{ account.accounttype }} </td>
+                    <td> £{{ account.currentbalance }} </td>
+                    <td> £{{ account.currentbalance }} </td>
+                    <td> £{{ account.currentbalance }} </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+  </div>
+</div>
+
+<div class="profile">
+    <div class="container">
+        {% for account in accounts: %}
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Account</th>
+                <th scope="col">Forecast Amount</th>
+                <th scope="col">Actual Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Resulting Balance</th>
+            </tr>
+        </thead>
+          <tbody>
+                {% for transaction in transactions %}
+                    {% if transaction.account == account.bankID %}
+                        <tr>
+                            <td> {{ account.bankname }} - {{ account.accounttype }} </td>
+                            <td> £{{ transaction.amount }} </td>
+                            <td><input type="text"></td>
+                            <td> {{ transaction.date }} </td>
+                            <td> {{ transaction.balance }} </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+          </tbody>
+        </table>
+  </div>
+</div>
+
+<!--<div>-->
+<!--    <img src="{{ graph }}">-->
+<!--</div>-->
+
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Incomes
+          </div>
+            <div class="page-sub-heading">
+                Manage budget incomes on this page
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div>
+    <a class="btn btn-primary profile-button" href="{{ url_for('add_income') }}">Add</a>
+  </div>
+
+  <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Owner</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Next Due Date</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+          <tbody>
+    {% for income in incomes: %}
+                <tr>
+                    <td> {{ user_name(income.owner) }} </td>
+                    <td> {{ income.amount}} </td>
+                    <td> {{ income.frequency}} </td>
+                    <td> {{ income.nextduedate}} </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('edit_income', income_id=income.incID) }}">Edit</a> </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('delete_income', income_id=income.incID) }}">Delete</a> </td>
+                </tr>
+    {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

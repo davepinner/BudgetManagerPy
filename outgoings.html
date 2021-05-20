@@ -1,0 +1,103 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Outgoings
+          </div>
+            <div class="page-sub-heading">
+                Manage budget outgoings on this page
+            </div>
+            <div class="page-sub-heading">
+                Check through your latest bank statements and enter appropriate outgoings.
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-sub-heading">
+    Fixed
+  </div>
+  <div>
+    <a class="btn btn-primary profile-button" href="{{ url_for('add_outgoing') }}">Add</a>
+  </div>
+
+    <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Amount</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Next Due Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Sub Category</th>
+                <th scope="col">Paid From</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+          <tbody>
+    {% for outgoing in outgoings: %}
+                <tr>
+                    <td> {{ outgoing.amount }} </td>
+                    <td> {{ outgoing.frequency }} </td>
+                    <td> {{ outgoing.nextduedate }} </td>
+                    <td> {{ cat_name(outgoing.category) }} </td>
+                    <td> {{ sub_cat_name(outgoing.subcategory) }} </td>
+                    <td> {{ bank_name(outgoing.paidfrom) }} </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('edit_outgoing', outgoing_id=outgoing.outID) }}">Edit</a> </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('delete_outgoing', outgoing_id=outgoing.outID) }}">Delete</a> </td>
+                </tr>
+    {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+  <div class="page-sub-heading">
+    Variable
+  </div>
+  <div>
+    <a class="btn btn-primary profile-button" href="{{ url_for('add_variable') }}">Add</a>
+  </div>
+
+    <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Amount</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Category</th>
+                <th scope="col">Sub Category</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+          <tbody>
+    {% for variable in variables: %}
+                <tr>
+                    <td> {{ variable.amount }} </td>
+                    <td> {{ variable.frequency }} </td>
+                    <td> {{ cat_name(variable.category) }} </td>
+                    <td> {{ sub_cat_name(variable.subcategory) }} </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('edit_variable', variable_id=variable.varID) }}">Edit</a> </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('delete_variable', variable_id=variable.varID) }}">Delete</a> </td>
+                </tr>
+    {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+  <div>
+    <a class="btn btn-primary profile-button " href="{{ url_for('manage_categories') }}">Manage Categories</a>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

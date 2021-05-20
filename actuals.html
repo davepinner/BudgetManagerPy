@@ -1,0 +1,56 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Actual Transactions
+          </div>
+            <div class="page-sub-heading">
+                Input actual values against projected income and outgoings
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Bank Name</th>
+                <th scope="col">Account Type</th>
+                <th scope="col">Current Balance</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+          <tbody>
+          {% for bank in accounts: %}
+                <tr>
+                    <td> {{bank.bankname}} </td>
+                    <td> {{bank.accounttype}} </td>
+                    <td> {{bank.currentbalance}} </td>
+                    <td> <a class="btn btn-primary profile-button" href="{{ url_for('edit_bank', bank_id=bank.bankID, update=True) }}">Update</a> </td>
+                </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+  </div>
+
+
+{% include "footer.html" %}
+{% endblock %}

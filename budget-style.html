@@ -1,0 +1,38 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            Budget Manager Profile
+          </div>
+            <div class="page-sub-heading">
+                Manage your budget style on this page
+            </div>
+            <div class="page-sub-heading-left">
+                Selecting a type for your budget is what allows this budget manager to be realistic. If you do your variable spending (food, car fuel, transport) on a weekly basis then select Weekly Budget. We will then model your budget based around the weekends between your pay dates.
+            </div>
+            <div class="page-sub-heading-left">
+                The benefit of weekly budgeting is that 1 in every 3 months, there are 5 weekends, when people generally do their shopping. This can easily catch people out when they are paid monthly.
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

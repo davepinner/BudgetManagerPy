@@ -1,0 +1,19 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+<h1 class="page-heading" style="padding-bottom: 30px; padding-top: 30px;">Budget Manager - the realistic solution to managing your household budget</h1>
+
+<div class="profile">
+    {% if not current_user.is_authenticated: %}
+        <p class="profile-heading">Please login for content to be displayed</p>
+    {% else: %}
+        <p class="profile-heading">Start creating your budget</p>
+    {% endif %}
+
+</div>
+
+{% include "footer.html" %}
+{% endblock %}
